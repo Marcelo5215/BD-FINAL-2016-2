@@ -18,7 +18,7 @@
 -- DROP TABLE IF EXISTS public."ORG_SUPERIOR" CASCADE;
 CREATE TABLE public."ORG_SUPERIOR"(
 	"orgID" integer NOT NULL,
-	"Nome" varchar(15),
+	"Nome" varchar(50),
 	CONSTRAINT "PK" PRIMARY KEY ("orgID")
 
 );
@@ -30,7 +30,7 @@ ALTER TABLE public."ORG_SUPERIOR" OWNER TO postgres;
 -- DROP TABLE IF EXISTS public."ORG_SUBORDINADO" CASCADE;
 CREATE TABLE public."ORG_SUBORDINADO"(
 	"orsubID" integer NOT NULL,
-	"Nome" varchar(15),
+	"Nome" varchar(50),
 	"orgID_ORG_SUPERIOR" integer,
 	CONSTRAINT "SUBPK" PRIMARY KEY ("orsubID")
 
@@ -50,7 +50,7 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS public."UNIDADE_GESTORA" CASCADE;
 CREATE TABLE public."UNIDADE_GESTORA"(
 	"ungID" integer NOT NULL,
-	"Nome" varchar(15),
+	"Nome" varchar(50),
 	"funcID_FUNCAO" integer,
 	"orsubID_ORG_SUBORDINADO" integer,
 	CONSTRAINT "uniPK" PRIMARY KEY ("ungID")
@@ -64,7 +64,7 @@ ALTER TABLE public."UNIDADE_GESTORA" OWNER TO postgres;
 -- DROP TABLE IF EXISTS public."FUNCAO" CASCADE;
 CREATE TABLE public."FUNCAO"(
 	"funcID" integer NOT NULL,
-	"Nome" varchar(15),
+	"Nome" varchar(50),
 	CONSTRAINT "funcPK" PRIMARY KEY ("funcID")
 
 );
@@ -90,7 +90,7 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS public."SUBFUNCAO" CASCADE;
 CREATE TABLE public."SUBFUNCAO"(
 	"subFuncID" integer NOT NULL,
-	"Nome" varchar(15),
+	"Nome" varchar(50),
 	CONSTRAINT "subfuncPK" PRIMARY KEY ("subFuncID")
 
 );
@@ -126,7 +126,7 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS public."PROGRAMA" CASCADE;
 CREATE TABLE public."PROGRAMA"(
 	"progID" integer NOT NULL,
-	"Nome" varchar(15),
+	"Nome" varchar(50),
 	CONSTRAINT "COD" PRIMARY KEY ("progID")
 
 );
@@ -162,10 +162,10 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS public."ACAO" CASCADE;
 CREATE TABLE public."ACAO"(
 	"acaoID" smallint NOT NULL,
-	nome varchar(15),
+	nome varchar(50),
 	"progID_PROGRAMA" integer,
 	"docpagID_DOCPAG" smallint,
-	"LinguagemCidada" varchar(15),
+	"LinguagemCidada" varchar(50),
 	CONSTRAINT "acaoPK" PRIMARY KEY ("acaoID")
 
 );
@@ -177,7 +177,7 @@ ALTER TABLE public."ACAO" OWNER TO postgres;
 -- DROP TABLE IF EXISTS public."DOCPAG" CASCADE;
 CREATE TABLE public."DOCPAG"(
 	"docpagID" smallint NOT NULL,
-	nome varchar(15),
+	nome varchar(50),
 	"Valor" decimal,
 	"CPF_PESSOA" smallint,
 	CONSTRAINT "dogpagPK" PRIMARY KEY ("docpagID")
@@ -191,7 +191,7 @@ ALTER TABLE public."DOCPAG" OWNER TO postgres;
 -- DROP TABLE IF EXISTS public."PESSOA" CASCADE;
 CREATE TABLE public."PESSOA"(
 	"CPF" smallint NOT NULL,
-	nome varchar(15),
+	nome varchar(50),
 	"orgID_ORG_SUPERIOR" integer,
 	CONSTRAINT "cpfPK" PRIMARY KEY ("CPF")
 
