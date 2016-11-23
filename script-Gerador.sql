@@ -126,7 +126,7 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 -- DROP TABLE IF EXISTS public."PROGRAMA" CASCADE;
 CREATE TABLE public."PROGRAMA"(
 	"progID" integer NOT NULL,
-	"Nome" varchar(50),
+	"Nome" varchar(100),
 	CONSTRAINT "COD" PRIMARY KEY ("progID")
 
 );
