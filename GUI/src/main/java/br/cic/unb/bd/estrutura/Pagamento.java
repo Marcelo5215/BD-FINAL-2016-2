@@ -29,7 +29,7 @@ public class Pagamento {
 	private java.util.Date data;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "orgID_ORG_SUPERIOR")
+	@JoinColumn(name = "CPF_PESSOA")
 	private Pessoa pessoa;
 	
 	public int getID() {

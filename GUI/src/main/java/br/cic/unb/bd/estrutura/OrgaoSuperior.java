@@ -12,7 +12,7 @@ import javax.persistence.Table;
 public class OrgaoSuperior {
 	
 	@Id
-	@Column(name = "orsubID")
+	@Column(name = "orsupID")
 	private int ID;
 	
 	@Column(name = "Nome", length = 15)

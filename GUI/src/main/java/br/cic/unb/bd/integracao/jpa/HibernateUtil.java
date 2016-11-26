@@ -4,6 +4,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ * Classe que cria o EntityManager para ser usado pelas 
+ * Entities de persistencia do Banco de Dados; Economiza
+ * escrita de código
+ * @author Davi
+ *
+ */
 public class HibernateUtil {
 
 	private HibernateUtil() {	}
@@ -18,7 +25,7 @@ public class HibernateUtil {
 	}
 
 	public EntityManager em() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("diariasdb");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DiariasDB");
 		return factory.createEntityManager();
 	}
 }
