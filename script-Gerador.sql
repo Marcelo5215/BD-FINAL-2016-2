@@ -9,9 +9,7 @@
 -- These commands were put in this file only for convenience.
 -- -- object: novo_banco_de_dados | type: DATABASE --
 -- DROP DATABASE IF EXISTS novo_banco_de_dados;
--- CREATE DATABASE novo_banco_de_dados WITH ENCODING = 'Win1252';
--- Se você criar o banco de dados usando "WITH ENCODING = 'Win1252'",
--- você pode comentar uma linha no fim desse arquivo que muda o encoding
+-- CREATE DATABASE novo_banco_de_dados;
 -- -- ddl-end --
 -- 
 
@@ -235,6 +233,3 @@ REFERENCES public.ACAO (acaoID) MATCH FULL
 
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
-
---Talvez seja necessário estar com o role postgres para que esse comando funcione
-update pg_database set encoding = pg_char_to_encoding('WIN1252') where datname = 'novo_banco_de_dados';
