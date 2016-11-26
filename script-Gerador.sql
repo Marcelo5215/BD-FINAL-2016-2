@@ -19,6 +19,7 @@
 CREATE TABLE public."ORG_SUPERIOR"(
 	"orgID" integer NOT NULL,
 	"Nome" varchar(50),
+	"CPF_PESSOA" integer,
 	CONSTRAINT "PK" PRIMARY KEY ("orgID")
 
 );
@@ -161,11 +162,11 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 -- object: public."ACAO" | type: TABLE --
 -- DROP TABLE IF EXISTS public."ACAO" CASCADE;
 CREATE TABLE public."ACAO"(
-	"acaoID" smallint NOT NULL,
+	"acaoID" integer NOT NULL,
 	nome varchar(50),
+	linguagemcidada varchar(50),
+	"docpagID_DOCPAG" integer,
 	"progID_PROGRAMA" integer,
-	"docpagID_DOCPAG" smallint,
-	"LinguagemCidada" varchar(50),
 	CONSTRAINT "acaoPK" PRIMARY KEY ("acaoID")
 
 );
@@ -176,10 +177,11 @@ ALTER TABLE public."ACAO" OWNER TO postgres;
 -- object: public."DOCPAG" | type: TABLE --
 -- DROP TABLE IF EXISTS public."DOCPAG" CASCADE;
 CREATE TABLE public."DOCPAG"(
-	"docpagID" smallint NOT NULL,
+	"docpagID" integer NOT NULL,
 	nome varchar(50),
 	"Valor" decimal,
-	"CPF_PESSOA" smallint,
+	data date,
+	"CPF_PESSOA" integer,
 	CONSTRAINT "dogpagPK" PRIMARY KEY ("docpagID")
 
 );
@@ -190,9 +192,8 @@ ALTER TABLE public."DOCPAG" OWNER TO postgres;
 -- object: public."PESSOA" | type: TABLE --
 -- DROP TABLE IF EXISTS public."PESSOA" CASCADE;
 CREATE TABLE public."PESSOA"(
-	"CPF" smallint NOT NULL,
+	"CPF" integer NOT NULL,
 	nome varchar(50),
-	"orgID_ORG_SUPERIOR" integer,
 	CONSTRAINT "cpfPK" PRIMARY KEY ("CPF")
 
 );
@@ -200,10 +201,17 @@ CREATE TABLE public."PESSOA"(
 ALTER TABLE public."PESSOA" OWNER TO postgres;
 -- ddl-end --
 
--- object: "PROGRAMA_fk" | type: CONSTRAINT --
--- ALTER TABLE public."ACAO" DROP CONSTRAINT IF EXISTS "PROGRAMA_fk" CASCADE;
-ALTER TABLE public."ACAO" ADD CONSTRAINT "PROGRAMA_fk" FOREIGN KEY ("progID_PROGRAMA")
-REFERENCES public."PROGRAMA" ("progID") MATCH FULL
+-- object: "PESSOA_fk" | type: CONSTRAINT --
+-- ALTER TABLE public."ORG_SUPERIOR" DROP CONSTRAINT IF EXISTS "PESSOA_fk" CASCADE;
+ALTER TABLE public."ORG_SUPERIOR" ADD CONSTRAINT "PESSOA_fk" FOREIGN KEY ("CPF_PESSOA")
+REFERENCES public."PESSOA" ("CPF") MATCH FULL
+ON DELETE SET NULL ON UPDATE CASCADE;
+-- ddl-end --
+
+-- object: "PESSOA_fk" | type: CONSTRAINT --
+-- ALTER TABLE public."DOCPAG" DROP CONSTRAINT IF EXISTS "PESSOA_fk" CASCADE;
+ALTER TABLE public."DOCPAG" ADD CONSTRAINT "PESSOA_fk" FOREIGN KEY ("CPF_PESSOA")
+REFERENCES public."PESSOA" ("CPF") MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
@@ -214,16 +222,9 @@ REFERENCES public."DOCPAG" ("docpagID") MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: "ORG_SUPERIOR_fk" | type: CONSTRAINT --
--- ALTER TABLE public."PESSOA" DROP CONSTRAINT IF EXISTS "ORG_SUPERIOR_fk" CASCADE;
-ALTER TABLE public."PESSOA" ADD CONSTRAINT "ORG_SUPERIOR_fk" FOREIGN KEY ("orgID_ORG_SUPERIOR")
-REFERENCES public."ORG_SUPERIOR" ("orgID") MATCH FULL
-ON DELETE SET NULL ON UPDATE CASCADE;
--- ddl-end --
-
--- object: "PESSOA_fk" | type: CONSTRAINT --
--- ALTER TABLE public."DOCPAG" DROP CONSTRAINT IF EXISTS "PESSOA_fk" CASCADE;
-ALTER TABLE public."DOCPAG" ADD CONSTRAINT "PESSOA_fk" FOREIGN KEY ("CPF_PESSOA")
-REFERENCES public."PESSOA" ("CPF") MATCH FULL
+-- object: "PROGRAMA_fk" | type: CONSTRAINT --
+-- ALTER TABLE public."ACAO" DROP CONSTRAINT IF EXISTS "PROGRAMA_fk" CASCADE;
+ALTER TABLE public."ACAO" ADD CONSTRAINT "PROGRAMA_fk" FOREIGN KEY ("progID_PROGRAMA")
+REFERENCES public."PROGRAMA" ("progID") MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
