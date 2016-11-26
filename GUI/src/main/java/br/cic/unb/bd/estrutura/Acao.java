@@ -19,7 +19,7 @@ public class Acao {
 	@Column(name = "nome", length = 15)
 	private String name;
 	
-	@Column(name = "nome", length = 64)
+	@Column(name = "LinguagemCidada", length = 64)
 	private String linguagem;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
