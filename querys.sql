@@ -1,3 +1,4 @@
-﻿SELECT count("CPF") FROM "PESSOA" AS p
-	JOIN "ORG_SUPERIOR" AS os ON p."orgID_ORG_SUPERIOR" = os."orgID"
-	WHERE os."Nome" LIKE '%PRESIDENCIA DA REPUBLICA';
+﻿--Quanto LUIZ CARLOS NONATO GASTOU .....
+SELECT SUM(dp.valor) FROM docpag AS dp
+	JOIN pessoa AS p ON dp.cpf_pessoa = p.cpf
+	WHERE p.cpf = 69258; -- LUIZ CARLOS NONATO
