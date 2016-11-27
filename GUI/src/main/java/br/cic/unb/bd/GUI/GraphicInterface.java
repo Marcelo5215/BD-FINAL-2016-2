@@ -11,7 +11,7 @@ import java.awt.event.*;
  *
  * @author macel
  */
-public class GraphicInterface extends javax.swing.JFrame {
+public class GraphicInterface extends JFrame {
 
     /**
 	 * 
@@ -32,27 +32,27 @@ public class GraphicInterface extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        WarningFrame = new javax.swing.JFrame();
-        WarningInternalFrame = new javax.swing.JInternalFrame();
-        WarnButton = new javax.swing.JButton();
-        WarnText = new javax.swing.JLabel();
-        InternalFrame = new javax.swing.JInternalFrame();
-        ScrollPane = new javax.swing.JScrollPane();
-        Table = new javax.swing.JTable();
-        Menu = new javax.swing.JMenuBar();
-        QueryMenu = new javax.swing.JMenu();
-        Query1 = new javax.swing.JMenuItem();
-        Query2 = new javax.swing.JMenuItem();
-        Query3 = new javax.swing.JMenuItem();
-        Query4 = new javax.swing.JMenuItem();
-        Query5 = new javax.swing.JMenuItem();
-        QueryGenOPT = new javax.swing.JMenuItem();
+        WarningFrame = new JFrame();
+        WarningInternalFrame = new JInternalFrame();
+        WarnButton = new JButton();
+        WarnText = new JLabel();
+        InternalFrame = new JInternalFrame();
+        ScrollPane = new JScrollPane();
+        Table = new JTable();
+        Menu = new JMenuBar();
+        QueryMenu = new JMenu();
+        Query1 = new JMenuItem();
+        Query2 = new JMenuItem();
+        Query3 = new JMenuItem();
+        Query4 = new JMenuItem();
+        Query5 = new JMenuItem();
+        QueryGenOPT = new JMenuItem();
 
         WarningInternalFrame.setVisible(true);
 
         WarnButton.setText("OK");
-        WarnButton.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        WarnButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 OKWarnActionPerformed(evt);
             }
         });
@@ -60,40 +60,40 @@ public class GraphicInterface extends javax.swing.JFrame {
         WarnText.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         WarnText.setText("jLabel1");
 
-        javax.swing.GroupLayout WarningInternalFrameLayout = new javax.swing.GroupLayout(WarningInternalFrame.getContentPane());
+        GroupLayout WarningInternalFrameLayout = new GroupLayout(WarningInternalFrame.getContentPane());
         WarningInternalFrame.getContentPane().setLayout(WarningInternalFrameLayout);
         WarningInternalFrameLayout.setHorizontalGroup(
-            WarningInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WarningInternalFrameLayout.createSequentialGroup()
+            WarningInternalFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, WarningInternalFrameLayout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(WarnButton))
             .addGroup(WarningInternalFrameLayout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(WarnText, javax.swing.GroupLayout.PREFERRED_SIZE, 233, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(WarnText, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(100, Short.MAX_VALUE))
         );
         WarningInternalFrameLayout.setVerticalGroup(
-            WarningInternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, WarningInternalFrameLayout.createSequentialGroup()
+            WarningInternalFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, WarningInternalFrameLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
-                .addComponent(WarnText, javax.swing.GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(WarnText, GroupLayout.DEFAULT_SIZE, 19, Short.MAX_VALUE)
+                .addPreferredGap(LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(WarnButton)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout WarningFrameLayout = new javax.swing.GroupLayout(WarningFrame.getContentPane());
+        GroupLayout WarningFrameLayout = new GroupLayout(WarningFrame.getContentPane());
         WarningFrame.getContentPane().setLayout(WarningFrameLayout);
         WarningFrameLayout.setHorizontalGroup(
-            WarningFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            WarningFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(WarningInternalFrame)
         );
         WarningFrameLayout.setVerticalGroup(
-            WarningFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            WarningFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(WarningInternalFrame)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
         InternalFrame.setVisible(true);
 
@@ -113,48 +113,48 @@ public class GraphicInterface extends javax.swing.JFrame {
         QueryMenu.setText("Querys");
 
         Query1.setText("Query1");
-        Query1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Query1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
             }
         });
         QueryMenu.add(Query1);
 
         Query2.setText("Query2");
-        Query2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Query2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
             }
         });
         QueryMenu.add(Query2);
 
         Query3.setText("Query3");
-        Query3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Query3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
             }
         });
         QueryMenu.add(Query3);
 
         Query4.setText("Query4");
-        Query4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Query4.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
             }
         });
         QueryMenu.add(Query4);
 
         Query5.setText("Query5");
-        Query5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        Query5.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
             }
         });
         QueryMenu.add(Query5);
 
         QueryGenOPT.setText("Query Generica");
-        QueryGenOPT.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        QueryGenOPT.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
             }
         });
@@ -164,38 +164,38 @@ public class GraphicInterface extends javax.swing.JFrame {
 
         InternalFrame.setJMenuBar(Menu);
 
-        javax.swing.GroupLayout InternalFrameLayout = new javax.swing.GroupLayout(InternalFrame.getContentPane());
+        GroupLayout InternalFrameLayout = new GroupLayout(InternalFrame.getContentPane());
         InternalFrame.getContentPane().setLayout(InternalFrameLayout);
         InternalFrameLayout.setHorizontalGroup(
-            InternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            InternalFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addGroup(InternalFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
+                .addComponent(ScrollPane, GroupLayout.DEFAULT_SIZE, 725, Short.MAX_VALUE)
                 .addContainerGap())
         );
         InternalFrameLayout.setVerticalGroup(
-            InternalFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, InternalFrameLayout.createSequentialGroup()
+            InternalFrameLayout.createParallelGroup(GroupLayout.Alignment.LEADING)
+            .addGroup(GroupLayout.Alignment.TRAILING, InternalFrameLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(ScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
+                .addComponent(ScrollPane, GroupLayout.DEFAULT_SIZE, 503, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        GroupLayout layout = new GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(InternalFrame)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            layout.createParallelGroup(GroupLayout.Alignment.LEADING)
             .addComponent(InternalFrame)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void QueryActionPerformed(java.awt.event.ActionEvent evt) {                                       
+    private void QueryActionPerformed(ActionEvent evt) {                                       
         if(evt.getSource().equals(Query1)){
         }
         else if(evt.getSource().equals(Query2)){
@@ -215,7 +215,7 @@ public class GraphicInterface extends javax.swing.JFrame {
         }
     }                                                                    
     
-    private void OKWarnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Query2ActionPerformed
+    private void OKWarnActionPerformed(ActionEvent evt) {//GEN-FIRST:event_Query2ActionPerformed
 
     }//GEN-LAST:event_Query2ActionPerformed
 
@@ -229,9 +229,9 @@ public class GraphicInterface extends javax.swing.JFrame {
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+            for (UIManager.LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
             }
@@ -241,7 +241,7 @@ public class GraphicInterface extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(GraphicInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
             java.util.logging.Logger.getLogger(GraphicInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(GraphicInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
@@ -255,20 +255,20 @@ public class GraphicInterface extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JInternalFrame InternalFrame;
-    private javax.swing.JMenuBar Menu;
-    private javax.swing.JMenuItem Query1;
-    private javax.swing.JMenuItem Query2;
-    private javax.swing.JMenuItem Query3;
-    private javax.swing.JMenuItem Query4;
-    private javax.swing.JMenuItem Query5;
-    private javax.swing.JMenuItem QueryGenOPT;
-    private javax.swing.JMenu QueryMenu;
-    private javax.swing.JScrollPane ScrollPane;
-    private javax.swing.JTable Table;
-    private javax.swing.JButton WarnButton;
-    private javax.swing.JLabel WarnText;
-    private javax.swing.JFrame WarningFrame;
-    private javax.swing.JInternalFrame WarningInternalFrame;
+    private JInternalFrame InternalFrame;
+    private JMenuBar Menu;
+    private JMenuItem Query1;
+    private JMenuItem Query2;
+    private JMenuItem Query3;
+    private JMenuItem Query4;
+    private JMenuItem Query5;
+    private JMenuItem QueryGenOPT;
+    private JMenu QueryMenu;
+    private JScrollPane ScrollPane;
+    private JTable Table;
+    private JButton WarnButton;
+    private JLabel WarnText;
+    private JFrame WarningFrame;
+    private JInternalFrame WarningInternalFrame;
     // End of variables declaration//GEN-END:variables
 }

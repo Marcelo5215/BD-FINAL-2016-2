@@ -12,18 +12,18 @@ import javax.persistence.Table;
 public class OrgaoSuperior {
 	
 	@Id
-	@Column(name = "orsupID")
-	private int ID;
+	@Column(name = "orgID")
+	private int orgID;
 	
-	@Column(name = "Nome", length = 15)
+	@Column(name = "Nome", length = 50)
 	private String name;
 
 	public int getID() {
-		return ID;
+		return orgID;
 	}
 
 	public void setID(int iD) {
-		ID = iD;
+		orgID = iD;
 	}
 
 	public String getName() {

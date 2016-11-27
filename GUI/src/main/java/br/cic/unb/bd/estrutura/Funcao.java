@@ -20,7 +20,7 @@ public class Funcao {
 	@Column(name = "funcID")
 	private int id;
 	
-	@Column(name = "Nome", length = 15)
+	@Column(name = "Nome", length = 50)
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

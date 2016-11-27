@@ -16,7 +16,7 @@ public class UnidadeGestora {
 	@Column(name = "ungID")
 	private int ID;
 	
-	@Column(name = "Nome", length = 15)
+	@Column(name = "Nome", length = 50)
 	private String nome;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

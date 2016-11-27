@@ -20,7 +20,7 @@ public class Subfuncao {
 	@Column(name = "subFuncID")
 	private int ID;
 	
-	@Column(name = "Nome", length = 15)
+	@Column(name = "Nome", length = 50)
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)

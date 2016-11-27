@@ -13,7 +13,7 @@ public class Programa {
 	@Column(name = "progID")
 	private int ID;
 	
-	@Column(name = "Nome", length = 15)
+	@Column(name = "Nome", length = 50)
 	private String name;
 
 	public int getID() {

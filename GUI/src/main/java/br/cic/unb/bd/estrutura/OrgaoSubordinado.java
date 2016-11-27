@@ -14,10 +14,10 @@ public class OrgaoSubordinado {
 	
 	@Id
 	@Column(name = "orsubID")
-	private int ID;
+	private int orsubID;
 	
-	@Column(name = "Nome", length = 15)
-	private String name;
+	@Column(name = "Nome", length = 50)
+	private String nome;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "orgID_ORG_SUPERIOR")
@@ -32,19 +32,19 @@ public class OrgaoSubordinado {
 	}
 
 	public int getID() {
-		return ID;
+		return orsubID;
 	}
 
 	public void setID(int iD) {
-		ID = iD;
+		orsubID = iD;
 	}
 
 	public String getName() {
-		return name;
+		return nome;
 	}
 
 	public void setName(String name) {
-		this.name = name;
+		this.nome = name;
 	}
 	
 	

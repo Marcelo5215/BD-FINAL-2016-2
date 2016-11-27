@@ -41,11 +41,11 @@ public class OrgaoSuperiorDAO implements br.cic.unb.bd.integracao.OrgaoSuperiorD
 	}
 
 	public OrgaoSuperior pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM ORGAO_SUPERIOR Osup WHERE Osup.orsupID = :pmtID";
+		String consulta = "FROM OrgaoSuperior as Osup where Osup.orgID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<OrgaoSuperior> osup = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<OrgaoSuperior> osup = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (osup == null || osup.size()==0){
 			return null;

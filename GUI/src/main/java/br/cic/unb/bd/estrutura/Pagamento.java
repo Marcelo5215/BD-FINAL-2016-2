@@ -18,7 +18,7 @@ public class Pagamento {
 	@Column(name = "docpagID")
 	private int ID;
 	
-	@Column(name = "nome", length = 15)
+	@Column(name = "nome", length = 50)
 	private String name;
 	
 	@Column(name = "Valor")
