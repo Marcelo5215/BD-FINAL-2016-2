@@ -1,5 +1,6 @@
 package br.cic.unb.bd.integracao.jpa;
 
+import br.cic.unb.bd.estrutura.Acao;
 import br.cic.unb.bd.estrutura.Funcao;
 
 import java.util.List;
@@ -43,10 +44,10 @@ public class FuncaoDAO implements br.cic.unb.bd.integracao.FuncaoDAO{
 	}
 
 	public List<Funcao> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM FUNCAO f WHERE f.Nome = :pmtNome";
+		String consulta = "FROM Funcao as f where f.name = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Funcao> funcoes = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<Funcao> funcoes = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (funcoes == null || funcoes.size()==0){
 			return null;
@@ -55,11 +56,12 @@ public class FuncaoDAO implements br.cic.unb.bd.integracao.FuncaoDAO{
 	}
 
 	public Funcao pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM FUNCAO f WHERE f.funcID = :pmtID";
+		String consulta = "FROM Funcao as f where f.id = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Funcao> funcao = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Funcao> funcao = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
+		
 		
 		if (funcao == null || funcao.size()==0){
 			return null;

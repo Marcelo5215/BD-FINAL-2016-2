@@ -41,11 +41,11 @@ public class SubfuncaoDAO implements br.cic.unb.bd.integracao.SubfuncaoDAO{
 	}
 
 	public Subfuncao pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM SUBFUNCAO sub WHERE sub.subFuncID = :pmtID";
+		String consulta = "FROM Subfuncao as subfun where subfun.ID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Subfuncao> sub = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Subfuncao> sub = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (sub == null || sub.size()==0){
 			return null;
@@ -54,10 +54,10 @@ public class SubfuncaoDAO implements br.cic.unb.bd.integracao.SubfuncaoDAO{
 	}
 
 	public List<Subfuncao> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM SUBFUNCAO sub WHERE sub.Nome = :pmtNome";
+		String consulta = "FROM Subfuncao as subfun where subfun.name = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Subfuncao> subs = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<Subfuncao> subs = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (subs == null || subs.size()==0){
 			return null;

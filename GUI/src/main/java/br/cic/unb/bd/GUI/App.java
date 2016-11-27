@@ -2,7 +2,9 @@ package br.cic.unb.bd.GUI;
 import br.cic.unb.bd.estrutura.*;
 import br.cic.unb.bd.integracao.jpa.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.List.*;
 
 /**
@@ -17,9 +19,17 @@ public class App
         OrgaoSuperiorDAO OSDAO = new OrgaoSuperiorDAO();
         //LinkedList<OrgaoSuperior> L = new LinkedList<OrgaoSuperior>();
         
+        List<OrgaoSuperior> orgs = new ArrayList<OrgaoSuperior>();
+        orgs = OSDAO.pesquisarPorNome("PRESIDENCIA DA REPUBLICA");
         
-        OS = OSDAO.pesquisarPorID(20000);
+        System.out.println(orgs.get(0).getID());
         
-        System.out.println(OS.getName());
+        Pagamento pag = new Pagamento();
+        PagamentoDAO pagDAO = new PagamentoDAO();
+        List<Pagamento> pags = new ArrayList<Pagamento>();
+        pag = pagDAO.pesquisarPorID(0);
+        
+        System.out.println(pag.getData());
+        
     }
 }

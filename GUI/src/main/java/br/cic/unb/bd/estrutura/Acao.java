@@ -19,11 +19,11 @@ public class Acao {
 	@Column(name = "nome", length = 200)
 	private String name;
 	
-	@Column(name = "LinguagemCidada", length = 200)
+	@Column(name = "linguagemcidada", length = 200)
 	private String linguagem;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "docpagID_DOCPAG")
+	@JoinColumn(name = "progID_PROGRAMA")
 	private Pagamento pagamento;
 
 	public int getID() {

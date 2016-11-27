@@ -1,6 +1,7 @@
 package br.cic.unb.bd.integracao.jpa;
 
 import br.cic.unb.bd.estrutura.Acao;
+import br.cic.unb.bd.estrutura.OrgaoSuperior;
 
 import java.util.List;
 
@@ -54,7 +55,7 @@ public class AcaoDAO implements br.cic.unb.bd.integracao.AcaoDAO{
 		String consulta = "SELECT * FROM ACAO a WHERE a.nome = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Acao> acoes = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<Acao> acoes = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (acoes == null || acoes.size()==0){
 			return null;
@@ -63,11 +64,11 @@ public class AcaoDAO implements br.cic.unb.bd.integracao.AcaoDAO{
 	}
 
 	public Acao pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM ACAO a WHERE a.acaoID = :pmtID";
+		String consulta = "FROM Acao as a where a.ID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Acao> acao = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Acao> acao = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (acao == null || acao.size()==0){
 			return null;
@@ -76,10 +77,11 @@ public class AcaoDAO implements br.cic.unb.bd.integracao.AcaoDAO{
 	}
 	
 	public List<Acao> pesquisarPorLinguagem(String s) {
-		String consulta = "SELECT * FROM ACAO a WHERE a.LinguagemCidada = :pmtNome";
+		String consulta = "FROM Acao as a where a.linguagem = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Acao> acoes = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		
+		List<Acao> acoes = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (acoes == null || acoes.size()==0){
 			return null;
@@ -89,11 +91,12 @@ public class AcaoDAO implements br.cic.unb.bd.integracao.AcaoDAO{
 
 
 	public List<Acao> pesquisarPorPagamento(int id) {
-		String consulta = "SELECT * FROM ACAO a WHERE a.docpagID_DOCPAG = :pmtID";
+		String consulta = "FROM Acao as a where a.pagamento.ID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Acao> acoes = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Acao> acoes = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
+		
 		
 		if (acoes == null || acoes.size()==0){
 			return null;

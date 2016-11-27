@@ -1,11 +1,15 @@
 package br.cic.unb.bd.integracao.jpa;
 
-import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.List;
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 
 import br.cic.unb.bd.estrutura.Pagamento;;
+
 
 public class PagamentoDAO implements br.cic.unb.bd.integracao.PagamentoDAO{
 
@@ -42,11 +46,11 @@ public class PagamentoDAO implements br.cic.unb.bd.integracao.PagamentoDAO{
 	}
 
 	public Pagamento pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM PAGAMENTO pag WHERE pag.docpagID = :pmtID";
+		String consulta = "FROM Pagamento as p where p.ID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Pagamento> pag = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (pag == null || pag.size()==0){
 			return null;
@@ -55,10 +59,10 @@ public class PagamentoDAO implements br.cic.unb.bd.integracao.PagamentoDAO{
 	}
 
 	public List<Pagamento> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM PAGAMENTO pag WHERE pag.nome = :pmtNome";
+		String consulta = "FROM Pagamento as p where p.name = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Pagamento> pag = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (pag == null || pag.size()==0){
 			return null;
@@ -67,22 +71,23 @@ public class PagamentoDAO implements br.cic.unb.bd.integracao.PagamentoDAO{
 	}
 
 	public List<Pagamento> pesquisarPorValor(double valor) {
-		String consulta = "SELECT * FROM PAGAMENTO pag WHERE pag.Valor = :pmtValor";
+		String consulta = "FROM Pagamento as p where p.valor = :pmtValor";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Pagamento> pag = em.createNamedQuery(consulta).setParameter("pmtValor", valor).getResultList();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtValor", valor).getResultList();
 		
 		if (pag == null || pag.size()==0){
 			return null;
 		}
 		return pag;
 	}
-
+	
+	@Temporal(value = TemporalType.DATE)
 	public List<Pagamento> pesquisarPorData(Date data) {
-		String consulta = "SELECT * FROM PAGAMENTO pag WHERE pag.Data_pagamento = :pmtData";
+		String consulta = "FROM Pagamento as p where p.data = :pmtData";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Pagamento> pag = em.createNamedQuery(consulta).setParameter("pmtData", data).getResultList();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtData", data).getResultList();
 		
 		if (pag == null || pag.size()==0){
 			return null;
@@ -91,15 +96,41 @@ public class PagamentoDAO implements br.cic.unb.bd.integracao.PagamentoDAO{
 	}
 
 	public List<Pagamento> pesquisarPorPessoa(int cpf) {
-		String consulta = "SELECT * FROM PAGAMENTO pag WHERE pag.CPF_PESSOA = :pmtCPF";
+		String consulta = "FROM Pagamento as p where p.pessoa.CPF = :pmtCPF";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Pagamento> pag = em.createNamedQuery(consulta).setParameter("pmtCPF", cpf).getResultList();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtCPF", cpf).getResultList();
 		
 		if (pag == null || pag.size()==0){
 			return null;
 		}
 		return pag;
 	}
+
+	public List<Pagamento> pesquisarPorGestao(int id) {
+		String consulta = "FROM Pagamento as p where p.gestao = :pmtID";
+		
+		EntityManager em = HibernateUtil.instance().em();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
+		
+		if (pag == null || pag.size()==0){
+			return null;
+		}
+		return pag;
+	}
+
+	public List<Pagamento> pesquisarPorAcao(int id) {
+		String consulta = "FROM Pagamento as p where p.acao.ID = :pmtID";
+		
+		EntityManager em = HibernateUtil.instance().em();
+		List<Pagamento> pag = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
+		
+		if (pag == null || pag.size()==0){
+			return null;
+		}
+		return pag;
+	}
+	
+	
 
 }

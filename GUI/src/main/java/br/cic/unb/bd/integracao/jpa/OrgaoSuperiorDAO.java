@@ -3,6 +3,7 @@ package br.cic.unb.bd.integracao.jpa;
 import java.util.List;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 
 import br.cic.unb.bd.estrutura.OrgaoSuperior;
 
@@ -54,10 +55,11 @@ public class OrgaoSuperiorDAO implements br.cic.unb.bd.integracao.OrgaoSuperiorD
 	}
 
 	public List<OrgaoSuperior> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM ORGAO_SUPERIOR Osup WHERE Osup.Nome = :pmtNome";
+		
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<OrgaoSuperior> osups = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		Query consulta = em.createQuery("SELECT Osup FROM OrgaoSuperior as Osup WHERE Osup.name = :pmtNome");
+		List<OrgaoSuperior> osups = consulta.setParameter("pmtNome", s).getResultList();
 		
 		if (osups == null || osups.size()==0){
 			return null;

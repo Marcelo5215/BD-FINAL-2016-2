@@ -42,10 +42,10 @@ public class OrgaoSubordinadoDAO implements br.cic.unb.bd.integracao.OrgaoSubord
 	}
 
 	public List<OrgaoSubordinado> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM ORG_SUBORDINADO Osub WHERE Osub.Nome = :pmtNome";
+		String consulta = "FROM OrgaoSubordinado as Osub where Osub.nome = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<OrgaoSubordinado> subs = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<OrgaoSubordinado> subs = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (subs == null || subs.size()==0){
 			return null;
@@ -54,11 +54,11 @@ public class OrgaoSubordinadoDAO implements br.cic.unb.bd.integracao.OrgaoSubord
 	}
 
 	public OrgaoSubordinado pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM ORG_SUBORDINADO Osub WHERE Osub.orsubID = :pmtID";
+		String consulta = "FROM OrgaoSubordinado as Osub where Osub.orsubID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<OrgaoSubordinado> sub = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<OrgaoSubordinado> sub = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (sub == null || sub.size()==0){
 			return null;
@@ -67,11 +67,11 @@ public class OrgaoSubordinadoDAO implements br.cic.unb.bd.integracao.OrgaoSubord
 	}
 
 	public List<OrgaoSubordinado> pesquisarPorSuperior(int id) {
-		String consulta = "SELECT * FROM ORG_SUBORDINADO Osub WHERE Osub.orgID_ORG_SUPERIOR = :pmtID";
+		String consulta = "FROM OrgaoSubordinado as Osub where Osub.superior.orgID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<OrgaoSubordinado> subs = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<OrgaoSubordinado> subs = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (subs == null || subs.size()==0){
 			return null;

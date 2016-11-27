@@ -23,8 +23,10 @@ public class Pagamento {
 	
 	@Column(name = "Valor")
 	private int valor;
+
+	private int gestao;
 	
-	@Column(name = "Data_pagamento")
+	@Column(name = "data")
 	@Temporal(value = TemporalType.DATE)
 	private java.util.Date data;
 	
@@ -32,6 +34,26 @@ public class Pagamento {
 	@JoinColumn(name = "CPF_PESSOA")
 	private Pessoa pessoa;
 	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "acaoID_ACAO")
+	private Acao acao;
+	
+	public int getGestao() {
+		return gestao;
+	}
+
+	public void setGestao(int gestao) {
+		this.gestao = gestao;
+	}
+
+	public Acao getAcao() {
+		return acao;
+	}
+
+	public void setAcao(Acao acao) {
+		this.acao = acao;
+	}
+
 	public int getID() {
 		return ID;
 	}
