@@ -40,7 +40,7 @@ select p.nome, count(dp.valor) from docpag as dp
 	limit 100
 	offset 0;
 
--- Mostr todas as viagens realizadas pela pessoa que mais gastou
+-- Mostra todas as viagens realizadas pela pessoa que mais gastou
 select sel1.nome, dp2.* from
 (select p.nome, p.cpf, count(dp.valor) from docpag as dp
 	join pessoa as p on dp.cpf_pessoa = p.cpf
