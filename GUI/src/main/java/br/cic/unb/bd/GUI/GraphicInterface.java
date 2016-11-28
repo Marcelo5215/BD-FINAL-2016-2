@@ -124,7 +124,7 @@ public class GraphicInterface extends JFrame {
 
         QueryMenu.setText("Querys");
 
-        Query1.setText("Quaanto uma pessoa gastou");
+        Query1.setText("Quanto uma pessoa gastou");
         Query1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
@@ -156,7 +156,7 @@ public class GraphicInterface extends JFrame {
         });
         QueryMenu.add(Query4);
 
-        Query5.setText("Query5");
+        Query5.setText("Viagens da pessoa que mais gastou");
         Query5.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
