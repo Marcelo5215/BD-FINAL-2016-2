@@ -20,11 +20,11 @@ public class Funcao {
 	@Column(name = "funcID")
 	private int id;
 	
-	@Column(name = "Nome", length = 15)
+	@Column(name = "Nome", length = 50)
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "FUNCAO_SUBFUNCAO", joinColumns = {@JoinColumn(name="funcao_id")}, inverseJoinColumns = {@JoinColumn(name = "subfuncao_id")})
+	@JoinTable(name = "FUNC_SUBFUNC", joinColumns = {@JoinColumn(name="funcID_FUNCAO")}, inverseJoinColumns = {@JoinColumn(name = "subFuncID_SUBFUNCAO")})
 	private List<Subfuncao> subs;
 
 	public int getId() {

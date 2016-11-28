@@ -42,11 +42,11 @@ public class PessoaDAO implements br.cic.unb.bd.integracao.PessoaDAO{
 	}
 
 	public Pessoa pesquisarPorCPF(int cpf) {
-		String consulta = "SELECT * FROM PESSOA pe WHERE pe.CPF = :pmtID";
+		String consulta = "FROM Pessoa as pe where pe.CPF = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Pessoa> pessoa = em.createNamedQuery(consulta).setParameter("pmtID", cpf).getResultList();
+		List<Pessoa> pessoa = em.createQuery(consulta).setParameter("pmtID", cpf).getResultList();
 		
 		if (pessoa == null || pessoa.size()==0){
 			return null;
@@ -55,10 +55,10 @@ public class PessoaDAO implements br.cic.unb.bd.integracao.PessoaDAO{
 	}
 
 	public List<Pessoa> pesquisarPorNome(String nome) {
-		String consulta = "SELECT * FROM PESSOA pe WHERE pe.nome = :pmtNome";
+		String consulta = "FROM Pessoa as pe where pe.name = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Pessoa> pessoas = em.createNamedQuery(consulta).setParameter("pmtNome", nome).getResultList();
+		List<Pessoa> pessoas = em.createQuery(consulta).setParameter("pmtNome", nome).getResultList();
 		
 		if (pessoas == null || pessoas.size()==0){
 			return null;
@@ -67,10 +67,10 @@ public class PessoaDAO implements br.cic.unb.bd.integracao.PessoaDAO{
 	}
 
 	public List<Pessoa> pesquisarPorOrgao(int id) {
-		String consulta = "SELECT * FROM PESSOA pe WHERE pe.orgID_ORG_SUPERIOR = :pmtID";
+		String consulta = "FROM Pessoa as pe where pe.superior.orgID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Pessoa> pessoas = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Pessoa> pessoas = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (pessoas == null || pessoas.size()==0){
 			return null;

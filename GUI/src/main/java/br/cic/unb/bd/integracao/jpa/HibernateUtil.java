@@ -25,7 +25,7 @@ public class HibernateUtil {
 	}
 
 	public EntityManager em() {
-		EntityManagerFactory factory = Persistence.createEntityManagerFactory("DiariasDB");
+		EntityManagerFactory factory = Persistence.createEntityManagerFactory("BD-FINAL");
 		return factory.createEntityManager();
 	}
 }

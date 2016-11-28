@@ -16,14 +16,14 @@ public class Acao {
 	@Column(name = "acaoID")
 	private int ID;
 	
-	@Column(name = "nome", length = 15)
+	@Column(name = "nome", length = 200)
 	private String name;
 	
-	@Column(name = "LinguagemCidada", length = 64)
+	@Column(name = "linguagemcidada", length = 200)
 	private String linguagem;
 	
 	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "docpagID_DOCPAG")
+	@JoinColumn(name = "progID_PROGRAMA")
 	private Pagamento pagamento;
 
 	public int getID() {

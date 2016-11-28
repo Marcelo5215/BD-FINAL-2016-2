@@ -20,4 +20,8 @@ public interface PagamentoDAO {
 	public List<Pagamento> pesquisarPorData(Date data);
 	
 	public List<Pagamento> pesquisarPorPessoa(int cpf);
+	
+	public List<Pagamento> pesquisarPorGestao(int id);
+	
+	public List<Pagamento> pesquisarPorAcao(int id);
 }

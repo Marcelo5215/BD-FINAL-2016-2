@@ -41,11 +41,11 @@ public class ProgramaDAO implements br.cic.unb.bd.integracao.ProgramaDAO{
 	}
 
 	public Programa pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM PROGRAMA prog WHERE prog.progID = :pmtID";
+		String consulta = "FROM Programa as prog where prog.ID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<Programa> prog = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<Programa> prog = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (prog == null || prog.size()==0){
 			return null;
@@ -54,10 +54,10 @@ public class ProgramaDAO implements br.cic.unb.bd.integracao.ProgramaDAO{
 	}
 
 	public List<Programa> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM PROGRAMA prog WHERE prog.Nome = :pmtNome";
+		String consulta = "FROM Programa as prog where prog.name = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<Programa> prog = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<Programa> prog = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (prog == null || prog.size()==0){
 			return null;

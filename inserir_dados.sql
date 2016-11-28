@@ -1,0 +1,11 @@
+﻿copy public.org_superior from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/ORG_SUPERIOR.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.org_subordinado from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/ORG_SUBORDINADO.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.pessoa from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/PESSOA.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.funcao from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/FUNCAO.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.unidade_gestora from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/UNIDADE_GESTORA.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.subfuncao from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/SUBFUNCAO.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.programa from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/PROGRAMA.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.acao from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/ACAO.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.docpag from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/DOCPAG.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.func_subfunc from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/muitos_SUBFUNCAO_tem_muitos_FUNCAO.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.prog_subfunc from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/PROG_SUBFUNC.csv' with (FORMAT csv, DELIMITER E'\t');

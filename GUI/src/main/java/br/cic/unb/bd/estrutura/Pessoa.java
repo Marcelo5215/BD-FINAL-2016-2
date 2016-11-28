@@ -16,7 +16,7 @@ public class Pessoa {
 	@Column
 	private int CPF;
 	
-	@Column(name = "nome", length = 15)
+	@Column(name = "nome", length = 50)
 	private String name;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

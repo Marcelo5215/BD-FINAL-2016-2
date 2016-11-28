@@ -42,11 +42,11 @@ public class UnidadeGestoraDAO implements br.cic.unb.bd.integracao.UnidadeGestor
 	}
 
 	public UnidadeGestora pesquisarPorID(int id) {
-		String consulta = "SELECT * FROM UNIDADE_GESTORA ug WHERE ug.ungID = :pmtID";
+		String consulta = "FROM UnidadeGestora as ug where ug.ID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<UnidadeGestora> ug = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<UnidadeGestora> ug = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (ug == null || ug.size()==0){
 			return null;
@@ -55,10 +55,10 @@ public class UnidadeGestoraDAO implements br.cic.unb.bd.integracao.UnidadeGestor
 	}
 
 	public List<UnidadeGestora> pesquisarPorNome(String s) {
-		String consulta = "SELECT * FROM UNIDADE_GESTORA ug WHERE ug.Nome = :pmtNome";
+		String consulta = "FROM UnidadeGestora as ug where ug.nome = :pmtNome";
 		
 		EntityManager em = HibernateUtil.instance().em();
-		List<UnidadeGestora> ug = em.createNamedQuery(consulta).setParameter("pmtNome", s).getResultList();
+		List<UnidadeGestora> ug = em.createQuery(consulta).setParameter("pmtNome", s).getResultList();
 		
 		if (ug == null || ug.size()==0){
 			return null;
@@ -67,11 +67,11 @@ public class UnidadeGestoraDAO implements br.cic.unb.bd.integracao.UnidadeGestor
 	}
 
 	public List<UnidadeGestora> pesquisarPorFuncao(int id) {
-		String consulta = "SELECT * FROM UNIDADE_GESTORA ug WHERE ug.funcID_FUNCAO = :pmtID";
+		String consulta = "FROM UnidadeGestora as ug where ug.funcao.id = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<UnidadeGestora> ugs = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<UnidadeGestora> ugs = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (ugs == null || ugs.size()==0){
 			return null;
@@ -80,11 +80,11 @@ public class UnidadeGestoraDAO implements br.cic.unb.bd.integracao.UnidadeGestor
 	}
 
 	public List<UnidadeGestora> pesquisarPorOrgao(int id) {
-		String consulta = "SELECT * FROM UNIDADE_GESTORA ug WHERE ug.orsubID_ORG_SUBORDINADO = :pmtID";
+		String consulta = "FROM UnidadeGestora as ug where ug.orgSub.orsubID = :pmtID";
 		
 		EntityManager em = HibernateUtil.instance().em();
 		
-		List<UnidadeGestora> ugs = em.createNamedQuery(consulta).setParameter("pmtID", id).getResultList();
+		List<UnidadeGestora> ugs = em.createQuery(consulta).setParameter("pmtID", id).getResultList();
 		
 		if (ugs == null || ugs.size()==0){
 			return null;
