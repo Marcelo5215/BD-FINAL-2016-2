@@ -68,11 +68,11 @@ public class App
         	System.out.println(dado.getViagens());
         }
         
-//        List<PessoaPagamento> listaFinal = queries.quantoPessoaMaisGastou();
-//        for(PessoaPagamento dado : listaFinal){
-//        	System.out.println(dado.getPessoaNome());
-//        	System.out.println(dado.getData());
-//        	System.out.println(dado.getValor());
-//        }
+        List<PessoaPagamento> listaFinal = queries.quantoPessoaMaisGastou();
+        for(PessoaPagamento dado : listaFinal){
+        	System.out.println(dado.getPessoaNome());
+        	System.out.println(dado.getPagamento().getData());
+        	System.out.println(dado.getPagamento().getValor());
+        }
     }
 }
