@@ -73,6 +73,6 @@ public class App
         	System.out.println(dado.getPessoaNome());
         	System.out.println(dado.getPagamento().getData());
         	System.out.println(dado.getPagamento().getValor());
-       }
+        }
     }
 }
