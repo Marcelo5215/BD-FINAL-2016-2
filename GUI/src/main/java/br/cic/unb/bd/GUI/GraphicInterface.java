@@ -6,13 +6,26 @@
 package br.cic.unb.bd.GUI;
 import javax.swing.*;
 import java.awt.event.*;
+import br.cic.unb.bd.estrutura.*;
+import br.cic.unb.bd.integracao.jpa.*;
+import br.cic.unb.bd.integracao.jpa.queries.PessoaPagamento;
+import br.cic.unb.bd.integracao.jpa.queries.PessoaValorTotal;
+import br.cic.unb.bd.integracao.jpa.queries.PessoaViagemTotal;
+import br.cic.unb.bd.integracao.jpa.queries.Queries;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.List.*;
+
 
 /**
  *
  * @author macel
  */
 public class GraphicInterface extends JFrame {
-
+	
+	private Queries queries = new Queries();
     /**
 	 * 
 	 */
@@ -46,7 +59,6 @@ public class GraphicInterface extends JFrame {
         Query3 = new JMenuItem();
         Query4 = new JMenuItem();
         Query5 = new JMenuItem();
-        QueryGenOPT = new JMenuItem();
 
         WarningInternalFrame.setVisible(true);
 
@@ -112,7 +124,7 @@ public class GraphicInterface extends JFrame {
 
         QueryMenu.setText("Querys");
 
-        Query1.setText("Query1");
+        Query1.setText("Quaanto uma pessoa gastou");
         Query1.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
@@ -120,7 +132,7 @@ public class GraphicInterface extends JFrame {
         });
         QueryMenu.add(Query1);
 
-        Query2.setText("Query2");
+        Query2.setText("Quanto orgao superior gastou");
         Query2.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
@@ -128,7 +140,7 @@ public class GraphicInterface extends JFrame {
         });
         QueryMenu.add(Query2);
 
-        Query3.setText("Query3");
+        Query3.setText("Quanto cada pessoa gastou");
         Query3.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
@@ -136,7 +148,7 @@ public class GraphicInterface extends JFrame {
         });
         QueryMenu.add(Query3);
 
-        Query4.setText("Query4");
+        Query4.setText("Quanto as pessoas viajaram");
         Query4.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
                 QueryActionPerformed(evt);
@@ -151,14 +163,6 @@ public class GraphicInterface extends JFrame {
             }
         });
         QueryMenu.add(Query5);
-
-        QueryGenOPT.setText("Query Generica");
-        QueryGenOPT.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
-                QueryActionPerformed(evt);
-            }
-        });
-        QueryMenu.add(QueryGenOPT);
 
         Menu.add(QueryMenu);
 
@@ -197,20 +201,87 @@ public class GraphicInterface extends JFrame {
 
     private void QueryActionPerformed(ActionEvent evt) {                                       
         if(evt.getSource().equals(Query1)){
+        	String s = (String)JOptionPane.showInputDialog(
+                    WarningFrame,
+                    "Digite o CPF da pessoa, 5 numeros do meio desconsiderando zeros a esquerda.");
+        	
+        	Double res = queries.quantoPessoaGastou(Integer.parseInt(s));
+        	String nome = queries.nomePessoa(Integer.parseInt(s));
+        	String[] cols = {"Pessoa", "Gastos"};
+            Object[][] data;
+        	data = new Object[1][2];
+        	if(nome == null){
+                data[0][0] = new String("PESSOA NAO ENCONTRADA");
+                data[0][1] = new Double(0.0);
+        	}
+        	else{
+                data[0][0] = new String(nome);
+                data[0][1] = new Double(res);
+        	}
+            
+            Table.setModel(new javax.swing.table.DefaultTableModel(
+            		data,
+            		cols));
         }
         else if(evt.getSource().equals(Query2)){
-
+        	
+        	String s = (String)JOptionPane.showInputDialog(
+                    WarningFrame,
+                    "Digite o Nome do orgao Superior");
+        	
+        	Double res = queries.quantoOrgaoSuperiorGastou(s);
+        	String[] cols = {"Orgao", "Gastos"};
+            Object[][] data;
+        	data = new Object[1][2];
+        	if(res < 0){
+                data[0][0] = new String("ORGAO NAO ENCONTRADO");
+                data[0][1] = new Double(0.0);
+        	}
+        	else{
+                data[0][0] = new String(s);
+                data[0][1] = new Double(res);
+        	}
+            
+            Table.setModel(new javax.swing.table.DefaultTableModel(
+            		data,
+            		cols));
+    
         }
         else if(evt.getSource().equals(Query3)){
-
+        	List<PessoaValorTotal> listaDados = queries.quantoTodasPessoasGastaram();
+            
+        	String[] cols = {"Nome", "Gastos"};
+            Object[][] data;
+            data = new Object[listaDados.size()][2];
+            int i = 0;
+            for(PessoaValorTotal dado : listaDados){
+            	data[i][0] = new String(dado.getNome());
+            	data[i][1] = new Integer((int) dado.getValor());
+            	i++;
+            }
+            
+            Table.setModel(new javax.swing.table.DefaultTableModel(
+            		data,
+            		cols));
         }
         else if(evt.getSource().equals(Query4)){
-  
+            List<PessoaViagemTotal> listaDados = queries.quantoTodasPessoasViajaram();
+            
+            String[] cols = {"Nome", "Viagens"};
+            Object[][] data;
+            data = new Object[listaDados.size()][2];
+            int i = 0;
+            for(PessoaViagemTotal dado : listaDados){
+            	data[i][0] = new String(dado.getNome());
+            	data[i][1] = new Long(dado.getViagens());
+            	i++;
+            }
+            
+            Table.setModel(new javax.swing.table.DefaultTableModel(
+            		data,
+            		cols));
         }
         else if(evt.getSource().equals(Query5)){
-
-        }
-        else if(evt.getSource().equals(QueryGenOPT)){
 
         }
     }                                                                    
@@ -262,7 +333,6 @@ public class GraphicInterface extends JFrame {
     private JMenuItem Query3;
     private JMenuItem Query4;
     private JMenuItem Query5;
-    private JMenuItem QueryGenOPT;
     private JMenu QueryMenu;
     private JScrollPane ScrollPane;
     private JTable Table;

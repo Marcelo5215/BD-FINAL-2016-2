@@ -37,38 +37,42 @@ public class App
         */
     	
         Queries queries = new Queries();
-      
-        /*
+        Pessoa pessoa = new Pessoa();
+        PessoaDAO pessoaD = new PessoaDAO();
+        
+        List<Pessoa> pess = new ArrayList<Pessoa>();
+        pessoa = pessoaD.pesquisarPorCPF(67418);
+        
+        System.out.println(pessoa.getName());
+        
+        
         double res = queries.quantoPessoaGastou(69258);
         
         System.out.println(res);
         
         res = queries.quantoOrgaoSuperiorGastou("PRESIDENCIA DA REPUBLICA");
-        System.out.println(res);*/
+        System.out.println(res);
         
-       /* List<PessoaValorTotal> listaDados = queries.quantoTodasPessoasGastaram();
+        List<PessoaValorTotal> listaDados = queries.quantoTodasPessoasGastaram();
         
         for(PessoaValorTotal dado : listaDados){
         	System.out.println(dado.getNome());
         	System.out.println(dado.getValor());
-        }*/
+        }
         
-        /*
-        List<PessoaViagemTotal> listaDados = queries.quantoTodasPessoasViajaram();
         
-        for(PessoaViagemTotal dado : listaDados){
+        List<PessoaViagemTotal> listaDados1 = queries.quantoTodasPessoasViajaram();
+        
+        for(PessoaViagemTotal dado : listaDados1){
         	System.out.println(dado.getNome());
         	System.out.println(dado.getViagens());
-        }*/
-        
-        List<PessoaPagamento> listaFinal = queries.quantoPessoaMaisGastou();
-        for(PessoaPagamento dado : listaFinal){
-        	System.out.println(dado.getPessoaNome());
-        	System.out.println(dado.getPagamento().getName());
-        	System.out.println(dado.getPagamento().getData());
-        	System.out.println(dado.getPagamento().getValor());
-        	System.out.println(dado.getPagamento().getID());
-        	System.out.println(dado.getPagamento().getAcao().getID());
         }
+        
+//        List<PessoaPagamento> listaFinal = queries.quantoPessoaMaisGastou();
+//        for(PessoaPagamento dado : listaFinal){
+//        	System.out.println(dado.getPessoaNome());
+//        	System.out.println(dado.getData());
+//        	System.out.println(dado.getValor());
+//        }
     }
 }

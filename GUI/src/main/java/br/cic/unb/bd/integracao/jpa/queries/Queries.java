@@ -43,6 +43,19 @@ public class Queries {
 		return resultado;
 	}
 	
+	public String nomePessoa(int cpf){
+		PessoaDAO pDAO = new PessoaDAO();
+		Pessoa p = new Pessoa();
+		
+		p = pDAO.pesquisarPorCPF(cpf);
+		
+		if(p == null){
+			return null;
+		}
+		
+		return p.getName();
+	}
+
 	public double quantoOrgaoSuperiorGastou(String s){
 		OrgaoSuperiorDAO osupDAO = new OrgaoSuperiorDAO();
 		List<OrgaoSuperior> osup = new ArrayList<OrgaoSuperior>();
@@ -50,7 +63,7 @@ public class Queries {
 		osup = osupDAO.pesquisarPorNome(s);
 		
 		if(osup == null){
-			return 0;
+			return -1;
 		}
 		
 		EntityManager em = HibernateUtil.instance().em();
