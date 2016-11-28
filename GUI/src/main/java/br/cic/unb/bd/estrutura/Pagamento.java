@@ -22,7 +22,7 @@ public class Pagamento {
 	private String name;
 	
 	@Column(name = "Valor")
-	private int valor;
+	private double valor;
 
 	private int gestao;
 	
@@ -70,7 +70,7 @@ public class Pagamento {
 		this.name = name;
 	}
 
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 

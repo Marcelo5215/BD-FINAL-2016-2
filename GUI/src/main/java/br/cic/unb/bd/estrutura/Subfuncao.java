@@ -24,7 +24,7 @@ public class Subfuncao {
 	private String name;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "SUBFUNCAO_PROGRAMA", joinColumns = {@JoinColumn(name="subFuncID_SUBFUNCAO")}, inverseJoinColumns = {@JoinColumn(name = "progID_PROGRAMA")})
+	@JoinTable(name = "PROG_SUBFUNC", joinColumns = {@JoinColumn(name="subFuncID_SUBFUNCAO")}, inverseJoinColumns = {@JoinColumn(name = "progID_PROGRAMA")})
 	private List<Programa> programas;
 
 	public int getID() {
