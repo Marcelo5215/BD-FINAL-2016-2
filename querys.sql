@@ -8,6 +8,10 @@ SELECT SUM(dp.valor) FROM docpag AS dp
 	JOIN pessoa AS p ON dp.cpf_pessoa = p.cpf
 	WHERE p.cpf = 12606; -- NATALIO BARBOSA ALCANTARA 
 
+SELECT SUM(dp.valor) FROM docpag AS dp
+	JOIN pessoa AS p ON dp.cpf_pessoa = p.cpf
+	WHERE p.nome LIKE 'FRANCISCO JOCA DE SOUSA FILHO'; 
+
 --Quanto A PRESIDENCIA DA REPUBLICA GASTOU no periodo de julho a dezembro
 SELECT SUM(dp.valor) FROM docpag AS dp
 	JOIN pessoa AS p ON dp.cpf_pessoa = p.cpf
