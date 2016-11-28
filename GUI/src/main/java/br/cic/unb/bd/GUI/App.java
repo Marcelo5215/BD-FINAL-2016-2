@@ -37,14 +37,7 @@ public class App
         */
     	
         Queries queries = new Queries();
-        Pessoa pessoa = new Pessoa();
-        PessoaDAO pessoaD = new PessoaDAO();
-        
-        List<Pessoa> pess = new ArrayList<Pessoa>();
-        pessoa = pessoaD.pesquisarPorCPF(67418);
-        
-        System.out.println(pessoa.getName());
-        
+      
         /*
         double res = queries.quantoPessoaGastou(69258);
         
@@ -71,8 +64,11 @@ public class App
         List<PessoaPagamento> listaFinal = queries.quantoPessoaMaisGastou();
         for(PessoaPagamento dado : listaFinal){
         	System.out.println(dado.getPessoaNome());
-        	System.out.println(dado.getData());
-        	System.out.println(dado.getValor());
+        	System.out.println(dado.getPagamento().getName());
+        	System.out.println(dado.getPagamento().getData());
+        	System.out.println(dado.getPagamento().getValor());
+        	System.out.println(dado.getPagamento().getID());
+        	System.out.println(dado.getPagamento().getAcao().getID());
         }
     }
 }

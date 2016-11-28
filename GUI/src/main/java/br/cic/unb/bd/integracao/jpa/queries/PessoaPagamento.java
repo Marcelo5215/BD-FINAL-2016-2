@@ -7,16 +7,23 @@ import javax.persistence.TemporalType;
 
 public class PessoaPagamento {
 	private String pessoaNome;
-	private java.util.Date data;
-	private double valor;
+	private Pagamento pagamento;
+	//private java.util.Date data;
+	//private double valor;
 	
+	public Pagamento getPagamento() {
+		return pagamento;
+	}
+	public void setPagamento(Pagamento pagamento) {
+		this.pagamento = pagamento;
+	}
 	public String getPessoaNome() {
 		return pessoaNome;
 	}
 	public void setPessoaNome(String pessoaNome) {
 		this.pessoaNome = pessoaNome;
 	}
-	public java.util.Date getData() {
+	/*public java.util.Date getData() {
 		return data;
 	}
 	public void setData(java.util.Date data) {
@@ -27,7 +34,7 @@ public class PessoaPagamento {
 	}
 	public void setValor(double valor) {
 		this.valor = valor;
-	}
+	}*/
 
 	
 	

@@ -1,18 +1,23 @@
 package br.cic.unb.bd.integracao.jpa.queries;
 
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
 import br.cic.unb.bd.estrutura.*;
+import br.cic.unb.bd.integracao.jpa.AcaoDAO;
 import br.cic.unb.bd.integracao.jpa.HibernateUtil;
 import br.cic.unb.bd.integracao.jpa.OrgaoSuperiorDAO;
 import br.cic.unb.bd.integracao.jpa.PessoaDAO;
 import br.cic.unb.bd.integracao.jpa.queries.*;
 
 public class Queries {
+
 	
 	public double quantoPessoaGastou(int cpf){
 		PessoaDAO pDAO = new PessoaDAO();
@@ -132,19 +137,20 @@ public class Queries {
 		PessoaViagemTotal sel1 = resultados.get(0);
 
 		
-		String consulta2 = "select sel1.nome, dp2.data, dp2.valor from "
-				+ ":pmtPVT as sel1"
-				+ "join Pagamento as dp2 on dp2.pessoa.CPF = sel1.CPF "
-				+ "order by dp2.valor";
-		Query query2 = em.createQuery(consulta2).setParameter("pmtPVT", sel1);
-		List<Object[]> tuplas2 = query2.getResultList();
+		String consulta2 = "select dp2 from "
+				+ "Pagamento as dp2 "
+				+ "where dp2.pessoa.CPF = :pmtCPF "
+				+ "order by dp2.data";
+		Query query2 = em.createQuery(consulta2).setParameter("pmtCPF", sel1.getCpf());
+		List<Object> tuplas2 = query2.getResultList();
 		List<PessoaPagamento> finais = new ArrayList<PessoaPagamento>();
 		
-		for (Object[] obj : tuplas1){
+		for (Object obj : tuplas2){
 			PessoaPagamento elemento = new PessoaPagamento();
-			elemento.setPessoaNome((String)obj[0]);
-			elemento.setData((java.util.Date)obj[1]);
-			elemento.setValor((Double)obj[2]);
+			Pagamento pag = new Pagamento();
+	
+			elemento.setPessoaNome(sel1.getNome());
+			elemento.setPagamento((Pagamento)obj);
 			
 			finais.add(elemento);
 		}
