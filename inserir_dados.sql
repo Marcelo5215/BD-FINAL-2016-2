@@ -7,3 +7,5 @@ copy public.subfuncao from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/SUBFUNCAO.
 copy public.programa from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/PROGRAMA.csv' with (FORMAT csv, DELIMITER E'\t');
 copy public.acao from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/ACAO.csv' with (FORMAT csv, DELIMITER E'\t');
 copy public.docpag from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/DOCPAG.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.func_subfunc from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/muitos_SUBFUNCAO_tem_muitos_FUNCAO.csv' with (FORMAT csv, DELIMITER E'\t');
+copy public.prog_subfunc from 'path_to_bd/BD-FINAL-2016-2/Diarias/D-1507/PROG_SUBFUNC.csv' with (FORMAT csv, DELIMITER E'\t');
