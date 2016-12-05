@@ -5,7 +5,8 @@
 );
 
 
--- Stored Procedure
+
+--Procedure para salvar os dados das pessoas demitidas da presidencia da republica
 CREATE OR REPLACE FUNCTION salvaexcluido()
 RETURNS trigger AS
 $BODY$ BEGIN
@@ -17,9 +18,10 @@ RETURN NULL;
 END; $BODY$
 LANGUAGE 'plpgsql';
 
+
+--Gatilho acionado apenas no horario de funcionamento 08hrs ate as 18hrs
 CREATE TRIGGER excluir_pessoa
-AFTER DELETE
-ON pessoa
+BEFORE DELETE OR INSERT ON pessoa
 FOR EACH ROW
-WHEN (old.cpf IS DISTINCT FROM 4451)
-EXECUTE PROCEDURE salvaexcluido();
+WHEN (DATE_PART('hour', current_timestamp) BETWEEN '08' AND '18')
+	EXECUTE PROCEDURE salvaexcluido();
